@@ -6,9 +6,9 @@ app = Flask(__name__)
 
 
 # # Route file for index.html page
-# @app.route('/')
-# def main_page():
-#     return render_template("index.html", sensor_value = sensor_value)
+@app.route('/', methods=["GET", "POST"])
+def main_page():
+    return render_template("index.html")
 
 
 
@@ -25,9 +25,10 @@ while True:
             sensor_value = data.split(":")[1]
             print(f"Received sensor data: {sensor_value}")
             # Route file for index.html page
-            @app.route('/')
+            @app.route('/', methods=["GET", "POST"])
             def main_page():
                 return render_template("index.html", sensor_value = sensor_value)
+            
     except KeyboardInterrupt:
         # Close the serial port when the script is interrupted (e.g., Ctrl+C)
         ser.close()
