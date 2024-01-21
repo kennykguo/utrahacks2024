@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #menu {
+            float: right;
+        }
+        li a:hover {
+            background-color: darkgreen;
+        }
+    </style>
 </head>
-<body>
-    <p>
-        {{sensor_value}}
-    </p>
-    <p>
-        Brian
-    </p>
+<body style="background-color:darkseagreen;">
+    <ul style="list-style-type: none; margin: 0; padding: 0; background-color: green; overflow: hidden; font-family:Verdana, Geneva, Tahoma, sans-serif;">
+        <li class="menu" style="float: right;"><a href="#aboutus" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">About Us</a></li>
+        <li class="menu" style="float: right;"><a href="#leaderboard" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Leader Board</a></li>
+        <li class="menu" style="float: right;"><a href="#dataanalytics" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Data Analytics</a></li>
+    </ul>
 </body>
 </html>
