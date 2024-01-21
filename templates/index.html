@@ -1,50 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <style>
-        #menu {
-            float: right;
-        }
-        body {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        li a:hover {
-            background-color: darkgreen;
-        }
-        .animated-heading {
-            text-align: center;
-            font-size: 170px;
-            color: azure;
-            margin-bottom: 100px;
-        }
-/* Define the animation keyframes */
-       @keyframes slideIn {
-        from {
-            transform: translateY(-50px);
-            opacity: 0;
-        }
-        to {
-        transform: translateY(0);
-        opacity: 1;
-        }
-        }
-
-/* Apply the animation to the heading */
-        .animated-heading {
-           animation: slideIn 1s ease-out;
-        }
-        </style>
 </head>
 <body style="background-color:darkseagreen;">
     <ul style="list-style-type: none; margin: 0; padding: 0; background-color: green; overflow: hidden; font-size: large;">
-        <li class="menu" style="float: right;"><a href="/aboutus" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">About Us</a></li>
-        <li class="menu" style="float: right;"><a href="/leaderboard" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Leader Board</a></li>
+        <li class="menu" style="float: right;"><a href="/leaderboard" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Leaderboard</a></li>
         <li class="menu" style="float: right;"><a href="/dataanalytics" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Data Analytics</a></li>
+        <li class="menu" style="float: right;"><a href="/" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Home</a></li>
     </ul>
     <h1 class="animated-heading">Transforming Trash, Building Tomorrow...</h1>
-    <h2 style="text-align: center; color: azure; font-size: 50x; animation: slideIn 1s ease-out; ">Welcome to University of Toronto's Automated Garbage Segregator- Trash Talker</h2>
+    
+    <h2 style="text-align: center; color: azure; font-size: 50x; animation: slideIn 1s ease-out; ">Welcome to University of Toronto's Automated Garbage Segregator - Trash Talker</h2>
+    <div class = "button1">
+        <button class="animated-heading button">
+            <a href="/dataanalytics">See Toronto's Trash History</a>
+        </button>
+    </div>
+
+    <img src="{{ url_for('static', filename='environment2.png') }}" alt="Example Image">
+
+
 </body>
 </html>

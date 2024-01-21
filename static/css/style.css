@@ -1,0 +1,76 @@
+#menu {
+    float: right;
+}
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    color: white;
+}
+
+.plot-container{
+    position: relative;
+    left: 225px;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+li a:hover {
+    background-color: darkgreen;
+}
+.animated-heading {
+    text-align: center;
+    font-size: 100px;
+    color: azure;
+    margin-bottom: 100px;
+}
+
+
+/* Define the animation keyframes */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+        }
+    to {
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+
+.button{
+    font-size: 20px;
+    border: 1px solid rgb(192, 192, 192);
+    padding: 12px 14px;
+    border-radius: 30px;
+    border-radius: 30px;
+    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+}
+
+.button1{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Apply the animation to the heading */
+.animated-heading {
+   animation: slideIn 1s ease-out;
+}
+
+img{
+    position: absolute;
+    left: 0;
+    top: 250px; 
+    z-index: -999;
+    opacity: 0.5;
+}

@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask Graph Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body style="background-color:darkseagreen;">
+    <ul style="list-style-type: none; margin: 0; padding: 0; background-color: green; overflow: hidden; font-size: large;">
+        <li class="menu" style="float: right;"><a href="/leaderboard" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Leaderboard</a></li>
+        <li class="menu" style="float: right;"><a href="/dataanalytics" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Data Analytics</a></li>
+        <li class="menu" style="float: right;"><a href="/" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Home</a></li>
+    </ul>
     <h1>Here are your trash can analytics...</h1>
     <h1>This page was last updated as of {{time}}</h1>
     <!-- Insert the graph HTML here -->
