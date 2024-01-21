@@ -24,7 +24,7 @@ int prevWet = 0;
 Servo servo;
 
 void turnright() {
-  servo.write(180);
+  servo.write(150);
   delay(3000);
   dryCounter++;
   
@@ -32,7 +32,7 @@ void turnright() {
   delay(2000);
 }
 void turnleft() {
-  servo.write(10);
+  servo.write(20);
   delay(3000); 
   wetCounter++;
 
@@ -85,12 +85,16 @@ void loop() {
 
   duration = pulseIn(echo , HIGH);
   distance = (duration/2) / 28.5 ;
-  Serial.println(distance);
+  // Serial.println(distance);
   delay(1000);
+
+  // Serial.println(soilMoistureValue);  
+  // Serial.println(map(soilMoistureValue,1023,0, 0, 100));
 
   if (emptying == 0) { // check to make sure garbage is not being emptied
     if(distance<11){
-      if(soilMoistureValue<450){
+      // Serial.print(soilMoistureValue);  
+      if(soilMoistureValue<550){
         turnleft();
       }
       else{
