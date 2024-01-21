@@ -9,9 +9,6 @@ app = Flask(__name__)
 
 ser = serial.Serial('COM5', 9600)
 
-# Route file for index.html page
-# When the homepage is accessed
-
 categories = ['Compost', 'Garbage']
 values = [0, 0]  # One value for each category
 
@@ -69,4 +66,3 @@ def data():
     current_time = datetime.now().strftime('%A %I:%M %p')
 
     return render_template('dataanalytics.html', graph_html = graph_html, time = current_time)
-# Removed graph
