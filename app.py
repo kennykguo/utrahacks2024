@@ -7,23 +7,29 @@ from datetime import datetime
 # Initializes the Flask application
 app = Flask(__name__)
 
-# ser = serial.Serial('COM5', 9600)
+ser = serial.Serial('COM5', 9600)
 
 # Route file for index.html page
 # When the homepage is accessed
 
 categories = ['Compost', 'Garbage']
-values = [5, 8]  # One value for each category
+values = [0, 0]  # One value for each category
 
 @app.route('/')
 def index():
     # Get data from the Arduino
-    # data = ser.readline().decode('utf-8').strip()
+    data = ser.readline().decode('utf-8').strip()
     # Get the soil moisture data
-    # if data.startswith("Soil Moisture:"):
-        # global sensor_value
-        # sensor_value = data.split(":")[1]
-        # print(f"Received sensor data: {sensor_value}")
+    if data.startswith("Total Wet Items:"):
+        global wet_items
+        wet_items = data.split(":")[1]
+        print(f"Received sensor wet: {wet_items}")
+        values[0] = wet_items
+    if data.startswith("Total Dry Items:"):
+        global dry_items
+        dry_items = data.split(":")[1]
+        print(f"Received sensor dry: {dry_items}")
+        values[1] = dry_items
     return render_template("index.html")
 # Make sure to pass in a value after
 
@@ -62,23 +68,3 @@ def data():
     current_time = datetime.now().strftime('%A %I:%M %p')
 
     return render_template('dataanalytics.html', graph_html=graph_html, time = current_time)
-
-
-
-
-
-# Get data from the Arduino and move it to the server
-
-# while True:
-#     try:
-#         # Read data from Serial
-#         data = ser.readline().decode('utf-8').strip()
-
-#         # Process the data (you may want to parse it and perform specific actions)
-#         if data.startswith("Soil Moisture:"):
-#             sensor_value = data.split(":")[1]
-#             print(f"Received sensor data: {sensor_value}")
-
-#     except KeyboardInterrupt:
-#         # Close the serial port when the script is interrupted (e.g., Ctrl+C)
-#         ser.close()
