@@ -5,7 +5,7 @@ const int trig = 13;
 const int echo = 12;
 int duration = 0;
 int distance = 0;
-int angle = 150;
+int angle = 90;
 int wetCounter = 0;
 int dryCounter = 0;
 
@@ -17,6 +17,9 @@ int resetButtonState = 0;
 
 int emptying = 0;
 
+int prevDry = 0;
+int prevWet = 0;
+
 #include <Servo.h>
 Servo servo;
 
@@ -24,17 +27,14 @@ void turnright() {
   servo.write(180);
   delay(3000);
   dryCounter++;
-  Serial.print("Total Dry Items: ");
-  Serial.println(dryCounter);
-
+  
   servo.write(angle);
 }
 void turnleft() {
   servo.write(10);
   delay(3000); 
   wetCounter++;
-  Serial.print("Total Wet Items: ");
-  Serial.println(wetCounter);
+  
 
   servo.write(angle);
 }
@@ -61,9 +61,22 @@ void loop() {
 
   // //int moisturePercentage = map(soilMoistureValue, 0, 1023, 100, 0);
 
-  Serial.print("Soil Moisture: ");
-  Serial.print(soilMoistureValue);
-  Serial.println("%");
+  // Serial.print("Soil Moisture: ");
+  // Serial.print(soilMoistureValue);
+  // Serial.println("%");
+
+  if (dryCounter != prevDry) {
+    Serial.print("Total Dry Items: ");
+    Serial.println(dryCounter);
+    prevDry = dryCounter;
+  }
+
+  
+  if (wetCounter != prevWet) {
+    Serial.print("Total Wet Items: ");
+    Serial.println(wetCounter);
+    prevWet = wetCounter;
+  }
 
   digitalWrite(trig , HIGH);
   delayMicroseconds(1000);
@@ -71,7 +84,7 @@ void loop() {
 
   duration = pulseIn(echo , HIGH);
   distance = (duration/2) / 28.5 ;
-  Serial.println(distance);
+  //Serial.println(distance);
   delay(500);
 
   if (emptying == 0) { // check to make sure garbage is not being emptied
@@ -100,4 +113,4 @@ void loop() {
     emptying = 0;
   }
 
-}
+}x`
