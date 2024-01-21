@@ -1,0 +1,4 @@
+pyserial==3.5
+python-dateutil==2.8.2
+plotly==5.18.0
+Flask==3.0.1
