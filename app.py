@@ -17,19 +17,6 @@ values = [0, 0]  # One value for each category
 
 @app.route('/')
 def index():
-    # Get data from the Arduino
-    data = ser.readline().decode('utf-8').strip()
-    # Get the soil moisture data
-    if data.startswith("Total Wet Items:"):
-        global wet_items
-        wet_items = data.split(":")[1]
-        print(f"Received sensor wet: {wet_items}")
-        values[0] = wet_items
-    if data.startswith("Total Dry Items:"):
-        global dry_items
-        dry_items = data.split(":")[1]
-        print(f"Received sensor dry: {dry_items}")
-        values[1] = dry_items
     return render_template("index.html")
 # Make sure to pass in a value after
 
@@ -46,7 +33,21 @@ def leaderboard():
 
 @app.route('/dataanalytics')
 def data():
-    # Create a bar graph with two columns
+    # Get data from the Arduino
+    data = ser.readline().decode('utf-8').strip()
+    print(data)
+    # Get the soil moisture data
+    if data.startswith("Total Wet Items:"):
+        global wet_items
+        wet_items = data.split(":")[1]
+        print(f"Received sensor wet:{wet_items}")
+        values[0] = int(wet_items)
+    if data.startswith("Total Dry Items:"):
+        global dry_items
+        dry_items = data.split(":")[1]
+        print(f"Received sensor dry:{dry_items}")
+        values[1] = int(dry_items)
+    #Create a bar graph with two columns
     fig = px.bar(
         x=categories,
         y=values,
@@ -67,4 +68,5 @@ def data():
     # Get the current time
     current_time = datetime.now().strftime('%A %I:%M %p')
 
-    return render_template('dataanalytics.html', graph_html=graph_html, time = current_time)
+    return render_template('dataanalytics.html', graph_html = graph_html, time = current_time)
+# Removed graph
