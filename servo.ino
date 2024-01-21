@@ -29,14 +29,15 @@ void turnright() {
   dryCounter++;
   
   servo.write(angle);
+  delay(2000);
 }
 void turnleft() {
   servo.write(10);
   delay(3000); 
   wetCounter++;
-  
 
   servo.write(angle);
+  delay(2000);
 }
 
 // the setup function runs once when you press reset or power the board
@@ -84,11 +85,11 @@ void loop() {
 
   duration = pulseIn(echo , HIGH);
   distance = (duration/2) / 28.5 ;
-  //Serial.println(distance);
-  delay(500);
+  Serial.println(distance);
+  delay(1000);
 
   if (emptying == 0) { // check to make sure garbage is not being emptied
-    if(distance<7){
+    if(distance<11){
       if(soilMoistureValue<450){
         turnleft();
       }
@@ -110,7 +111,8 @@ void loop() {
 
   if (resetButtonState == HIGH) {
     servo.write(angle);
+    delay(3000);
     emptying = 0;
   }
 
-}x`
+}
